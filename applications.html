@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application Review — ClubFlow</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <p class="brand">ClubFlow</p>
+    <p class="campaign-name">SAB Recruitment 2026 <span class="badge badge-info">Applications closed</span></p>
+    <p class="user">Phan Hải Yến <span class="user-role">SAB Executive</span></p>
+  </header>
+
+  <nav class="app-nav" aria-label="Main">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="index.html">Recruitment Campaigns</a></li>
+      <li><a class="nav-link" href="applications.html" aria-current="page">Applications</a></li>
+      <li><a class="nav-link" href="schedule.html">Interview Schedule</a></li>
+    </ul>
+  </nav>
+
+  <main class="app-main">
+    <div class="page-title">
+      <div>
+        <h1>Application Review</h1>
+        <p class="lead">Review the applications for SAB Recruitment 2026. Applications opened on 02 Nov 2026 and closed on 15 Nov 2026.</p>
+      </div>
+      <a class="button button-primary" href="schedule.html">Continue to Interview Scheduling</a>
+    </div>
+
+    <section aria-labelledby="overview-title">
+      <h2 id="overview-title">Overview</h2>
+      <dl class="stats">
+        <div class="card stat">
+          <dt>Total applications</dt>
+          <dd class="stat-value">24</dd>
+          <dd class="stat-note">from 21 students</dd>
+        </div>
+        <div class="card stat">
+          <dt>Pending review</dt>
+          <dd class="stat-value">12</dd>
+          <dd class="stat-note">need a decision</dd>
+        </div>
+        <div class="card stat">
+          <dt>Shortlisted</dt>
+          <dd class="stat-value">8</dd>
+          <dd class="stat-note">go to interview scheduling</dd>
+        </div>
+        <div class="card stat">
+          <dt>Rejected</dt>
+          <dd class="stat-value">4</dd>
+          <dd class="stat-note">closed</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="review">
+      <section class="review-list card" aria-labelledby="list-title">
+        <h2 id="list-title">Applications</h2>
+
+        <form class="filters" role="search" aria-label="Filter applications">
+          <div class="field">
+            <label for="search">Search applicant name or student ID</label>
+            <input id="search" name="search" type="search">
+          </div>
+          <div class="field">
+            <label for="position">Position</label>
+            <select id="position" name="position">
+              <option>All positions</option>
+              <option>Content Team</option>
+              <option>Event Operations</option>
+              <option>Design &amp; Media</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option>All statuses</option>
+              <option>Pending</option>
+              <option>Shortlisted</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+          <button class="button button-secondary" type="button">Search</button>
+        </form>
+
+        <div class="table-wrap" role="region" aria-labelledby="table-caption" tabindex="0">
+          <table>
+            <caption id="table-caption">Applications, page 1 of 4</caption>
+            <thead>
+              <tr>
+                <th scope="col">Applicant</th>
+                <th scope="col">Position</th>
+                <th scope="col">Submitted</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="is-open">
+                <th scope="row">Vũ Mai Linh<span class="cell-sub">S20240512</span></th>
+                <td>Content Team</td>
+                <td>03 Nov 2026</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Vũ Mai Linh, Content Team">Review</button></td>
+              </tr>
+              <tr>
+                <th scope="row">Nguyễn Minh Anh<span class="cell-sub">S20241088</span></th>
+                <td>Content Team</td>
+                <td>04 Nov 2026</td>
+                <td><span class="badge badge-ok">Shortlisted</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Nguyễn Minh Anh, Content Team">Review</button></td>
+              </tr>
+              <tr>
+                <th scope="row">Lê Thu Hà<span class="cell-sub">S20240954</span></th>
+                <td>Content Team</td>
+                <td>04 Nov 2026</td>
+                <td><span class="badge badge-ok">Shortlisted</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Lê Thu Hà, Content Team">Review</button></td>
+              </tr>
+              <tr>
+                <th scope="row">Phạm Quốc Bảo<span class="cell-sub">S20241280</span></th>
+                <td>Design &amp; Media</td>
+                <td>05 Nov 2026</td>
+                <td><span class="badge badge-ok">Shortlisted</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Phạm Quốc Bảo, Design and Media">Review</button></td>
+              </tr>
+              <tr>
+                <th scope="row">Phạm Quốc Bảo<span class="cell-sub">S20241280</span></th>
+                <td>Event Operations</td>
+                <td>05 Nov 2026</td>
+                <td><span class="badge badge-ok">Shortlisted</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Phạm Quốc Bảo, Event Operations">Review</button></td>
+              </tr>
+              <tr>
+                <th scope="row">Lê Văn Khôi<span class="cell-sub">S20240677</span></th>
+                <td>Event Operations</td>
+                <td>06 Nov 2026</td>
+                <td><span class="badge badge-no">Rejected</span></td>
+                <td><button class="button button-small" type="button" aria-label="Review Lê Văn Khôi, Event Operations">Review</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="pager" aria-label="Application pages">
+          <button class="button button-secondary" type="button" disabled>Previous</button>
+          <p class="pager-info">Page 1 of 4 · 24 applications</p>
+          <button class="button button-secondary" type="button">Next</button>
+        </nav>
+      </section>
+
+      <section class="review-detail card" aria-labelledby="detail-title">
+        <h2 id="detail-title">Application details</h2>
+        <div class="person">
+          <span class="avatar" aria-hidden="true">VL</span>
+          <div>
+            <p class="person-name">Vũ Mai Linh <span class="badge badge-pending">Pending</span></p>
+            <p class="person-id">Student ID S20240512</p>
+          </div>
+        </div>
+        <dl class="facts">
+          <div><dt>Email</dt><dd>mai.linh.vu@student.example</dd></div>
+          <div><dt>Phone</dt><dd>0912 345 678</dd></div>
+          <div><dt>Study</dt><dd>Year 2, Business IT</dd></div>
+          <div><dt>Position applied for</dt><dd>Content Team (first choice)</dd></div>
+        </dl>
+
+        <h3>Statement of purpose</h3>
+        <p class="meta">142 of 300 words</p>
+        <blockquote class="statement">
+          <p>I have managed communication channels for my freshman cohort for a year, and I enjoy writing short, honest stories that bring students closer together. In my second semester I wrote the weekly newsletter for about two hundred first-year students, edited posts from five classmates, and kept a simple calendar so that every announcement went out on time. I want to join the Content Team because SAB campaigns reach many students, and I would like to learn from experienced editors how to plan a series of posts, check facts, and write for different audiences. I am comfortable working with a small team, taking feedback quickly, and meeting deadlines during busy weeks. If I am selected, I will help write event announcements, interview student volunteers, and prepare clear press copy for every SAB campaign this academic year, always in a friendly and respectful voice.</p>
+        </blockquote>
+
+        <h3>CV</h3>
+        <div class="file">
+          <p class="file-name">VuMaiLinh_CV_2026.pdf <span class="meta">1.4 MB · uploaded 03 Nov 2026</span></p>
+          <div class="file-actions">
+            <button class="button button-secondary" type="button">View CV</button>
+            <button class="button button-secondary" type="button">Download</button>
+          </div>
+        </div>
+
+        <h3>Internal notes</h3>
+        <div class="field">
+          <label for="notes">Note for this application (visible only to the Executive)</label>
+          <textarea id="notes" name="notes" rows="4">Clear writing sample. Good fit for the weekly newsletter. Recommend for the interview.</textarea>
+        </div>
+
+        <h3>Application timeline</h3>
+        <ol class="timeline">
+          <li>Submitted on 03 Nov 2026</li>
+          <li>Awaiting review</li>
+        </ol>
+
+        <div class="actions">
+          <button class="button button-danger" type="button">Reject</button>
+          <button class="button button-secondary" type="button">Close</button>
+          <button class="button button-primary" type="button">Shortlist Candidate</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>ClubFlow · SAB Recruitment 2026 · Student project for CSC13008.</p>
+  </footer>
+</body>
+</html>
