@@ -1,0 +1,313 @@
+/* campaign.css — page-specific styles for index.html (Create Recruitment Campaign).
+   Do NOT edit css/styles.css; shared tokens and shell come from there. */
+
+/* ── Status bar above the form ──────────────────────────────────────────── */
+.campaign-status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  min-height: 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-tag-draft {
+  background: #fef3c7;
+  color: #78350f;
+  border: 1px solid #fcd34d;
+}
+
+.status-tag-club {
+  background: #dbeafe;
+  color: #1e3a8a;
+  border: 1px solid #93c5fd;
+}
+
+/* ── Page title block ────────────────────────────────────────────────────── */
+.campaign-page-title {
+  margin-bottom: var(--space-4);
+}
+
+.campaign-page-title h1 {
+  margin-bottom: var(--space-1);
+}
+
+/* ── Top action bar (Save as Draft / Preview / Publish) ─────────────────── */
+.campaign-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+/* ── Section card with numbered heading ─────────────────────────────────── */
+.form-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header {
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header h2 {
+  margin-bottom: var(--space-1);
+}
+
+.form-section-header .lead {
+  margin: 0;
+}
+
+/* Section header with an action button on the right */
+.form-section-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header-row h2 {
+  margin-bottom: var(--space-1);
+}
+
+/* ── Fieldset reset — removes browser default border/padding inside position cards ── */
+.position-card-body fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+/* ── Two-column field rows inside a section ─────────────────────────────── */
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Full-width modifier: always one column regardless of breakpoint */
+.field-row--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ── Required marker ─────────────────────────────────────────────────────── */
+.req {
+  color: var(--color-danger);
+  font-weight: 700;
+  /* purely visual; aria-required on the input handles semantics */
+}
+
+/* ── Hint text below a label ─────────────────────────────────────────────── */
+.field-hint {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ── Duration badge next to a date field ─────────────────────────────────── */
+.date-label-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+}
+
+.duration-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  min-height: var(--space-3);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #fef9c3;
+  color: #713f12;
+  border: 1px solid #fde047;
+  white-space: nowrap;
+}
+
+/* ── Position card ───────────────────────────────────────────────────────── */
+.position-card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.position-card:last-child {
+  margin-bottom: 0;
+}
+
+.position-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.position-card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+/* Icon circle for each department */
+.dept-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  /* SVG icons are decorative aria-hidden spans */
+}
+
+.position-card-title h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  overflow-wrap: anywhere;
+}
+
+.position-card-title .dept-label {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.openings-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  min-height: var(--space-3);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #1e3a8a;
+  white-space: nowrap;
+  flex: none;
+}
+
+.position-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+/* The three-column row (role title, department, quota) */
+.position-fields-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* ── Bottom form actions ──────────────────────────────────────────────────── */
+.campaign-bottom-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-line);
+  margin-top: var(--space-2);
+}
+
+/* ── Long-item overflow guard ────────────────────────────────────────────── */
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* ── Screen-reader-only utility (visually hidden but accessible) ─────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Tablet: 768 px ──────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .form-section {
+    padding: var(--space-4);
+  }
+
+  .field-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Full-width rows always stay single-column */
+  .field-row--full {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Campaign Name spans full width, Host Club fills the second column  */
+  .field-row--name-host .field:first-child {
+    grid-column: 1;
+  }
+
+  .position-fields-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Quota field is narrow; put role title + dept in first two, quota in third */
+  .position-fields-row .field--quota {
+    grid-column: auto;
+  }
+
+  .campaign-top-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* ── Laptop: 1280 px ─────────────────────────────────────────────────────── */
+@media (min-width: 1280px) {
+  .form-section {
+    padding: var(--space-5);
+  }
+
+  /* Three equal columns for the three position fields */
+  .position-fields-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Dates side by side */
+  .field-row--dates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

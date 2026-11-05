@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Recruitment Campaign — ClubFlow</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/campaign.css">
+</head>
+<body>
+
+  <!-- ── App shell: header ──────────────────────────────────────────────── -->
+  <header class="app-header">
+    <p class="brand">ClubFlow</p>
+    <p class="campaign-name">SAB Recruitment 2026 <span class="badge badge-info">Draft</span></p>
+    <p class="user">Phan Hải Yến <span class="user-role">SAB Executive</span></p>
+  </header>
+
+  <!-- ── App shell: nav ────────────────────────────────────────────────── -->
+  <nav class="app-nav" aria-label="Main">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="index.html" aria-current="page">Recruitment Campaigns</a></li>
+      <li><a class="nav-link" href="applications.html">Applications</a></li>
+      <li><a class="nav-link" href="schedule.html">Interview Schedule</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Main content ───────────────────────────────────────────────────── -->
+  <main class="app-main">
+
+    <!-- Page title block -->
+    <div class="page-title campaign-page-title">
+      <div>
+        <div class="campaign-status-bar">
+          <span class="status-tag status-tag-draft">Draft</span>
+          <span class="status-tag status-tag-club">Student Activities Board (SAB)</span>
+        </div>
+        <h1>Create Recruitment Campaign</h1>
+        <p class="lead">Configure campaign details, departments, position requirements, and application timeline for your club.</p>
+      </div>
+      <div class="campaign-top-actions">
+        <button class="button button-secondary" type="button">Save as Draft</button>
+        <button class="button button-secondary" type="button">Preview Campaign</button>
+        <button class="button button-primary" type="submit" form="campaign-form">Publish Campaign</button>
+      </div>
+    </div>
+
+    <!-- ── Campaign form ─────────────────────────────────────────────────── -->
+    <form id="campaign-form" action="applications.html" method="get" novalidate>
+
+      <!-- Section 1: Campaign Overview & Timeline -->
+      <section class="form-section" aria-labelledby="section-overview">
+        <div class="form-section-header">
+          <h2 id="section-overview">1. Campaign Overview &amp; Timeline</h2>
+          <p class="lead">General information, host club identifier, and application schedule.</p>
+        </div>
+
+        <!-- Campaign Name + Host Club -->
+        <div class="field-row field-row--name-host">
+          <div class="field">
+            <label for="campaign-name">Campaign Name <span class="req" aria-hidden="true">*</span></label>
+            <input
+              id="campaign-name"
+              name="campaign-name"
+              type="text"
+              value="SAB Recruitment 2026"
+              aria-required="true"
+              autocomplete="off"
+            >
+          </div>
+          <div class="field">
+            <label for="host-club">Host Club / Organisation <span class="req" aria-hidden="true">*</span></label>
+            <input
+              id="host-club"
+              name="host-club"
+              type="text"
+              value="Student Activities Board (SAB)"
+              aria-required="true"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Campaign Description -->
+        <div class="field-row field-row--full">
+          <div class="field">
+            <label for="campaign-description">Campaign Description &amp; Pitch <span class="req" aria-hidden="true">*</span></label>
+            <textarea
+              id="campaign-description"
+              name="campaign-description"
+              rows="4"
+              aria-required="true"
+            >Join our student community and help organize creative campus events, lead impactful multimedia storytelling, and foster campus life across university cohorts.</textarea>
+          </div>
+        </div>
+
+        <!-- Application Dates -->
+        <div class="field-row field-row--dates">
+          <div class="field">
+            <div class="date-label-row">
+              <label for="date-open">Application Opening Date <span class="req" aria-hidden="true">*</span></label>
+              <span class="meta">Portal opens 00:00</span>
+            </div>
+            <input
+              id="date-open"
+              name="date-open"
+              type="date"
+              value="2026-11-02"
+              aria-required="true"
+            >
+          </div>
+          <div class="field">
+            <div class="date-label-row">
+              <label for="date-close">Application Closing Date <span class="req" aria-hidden="true">*</span></label>
+              <span class="duration-badge">14 days</span>
+            </div>
+            <input
+              id="date-close"
+              name="date-close"
+              type="date"
+              value="2026-11-15"
+              aria-required="true"
+            >
+          </div>
+        </div>
+
+        <!-- Submission Instructions -->
+        <div class="field-row field-row--full">
+          <div class="field">
+            <label for="submission-instructions">
+              Application Submission Instructions for Candidates <span class="req" aria-hidden="true">*</span>
+            </label>
+            <p class="field-hint" id="instructions-hint">These instructions will be displayed at the top of candidate submission forms.</p>
+            <textarea
+              id="submission-instructions"
+              name="submission-instructions"
+              rows="4"
+              aria-required="true"
+              aria-describedby="instructions-hint"
+            >Candidates must complete the form, submit a motivation statement (max 300 words), and attach their CV as a PDF (max 5 MB).</textarea>
+          </div>
+        </div>
+
+      </section><!-- /section 1 -->
+
+      <!-- Section 2: Recruitment Departments & Positions -->
+      <section class="form-section" aria-labelledby="section-positions">
+        <div class="form-section-header-row">
+          <div>
+            <h2 id="section-positions">2. Recruitment Departments &amp; Positions</h2>
+            <p class="lead">Specify target departments, quota capacity, and custom qualification requirements.</p>
+          </div>
+          <button class="button button-secondary" type="button">+ Add Position</button>
+        </div>
+
+        <!-- Position 1: Content Team -->
+        <article class="position-card" aria-label="Position: Content Team">
+          <div class="position-card-header">
+            <div class="position-card-title">
+              <span class="dept-icon" aria-hidden="true">✍</span>
+              <div>
+                <h3>Content Team</h3>
+                <span class="dept-label">Department: Media &amp; Communications</span>
+              </div>
+            </div>
+            <div class="actions">
+              <span class="openings-badge">3 Openings</span>
+              <button class="button button-secondary button-small" type="button" aria-label="Remove Content Team position">Remove</button>
+            </div>
+          </div>
+
+          <div class="position-card-body">
+            <fieldset>
+              <legend class="sr-only">Content Team position details</legend>
+              <div class="position-fields-row">
+                <div class="field">
+                  <label for="pos1-title">Role Title</label>
+                  <!-- Long Vietnamese name — layout test item -->
+                  <input
+                    id="pos1-title"
+                    name="pos1-title"
+                    type="text"
+                    value="Content Team Specialist"
+                    autocomplete="off"
+                  >
+                  <p class="field-hint overflow-wrap-anywhere">Also known as: Điều phối viên Truyền thông và Quan hệ Đối ngoại cho Chương trình Chào đón Tân sinh viên</p>
+                </div>
+                <div class="field">
+                  <label for="pos1-dept">Department / Team</label>
+                  <input
+                    id="pos1-dept"
+                    name="pos1-dept"
+                    type="text"
+                    value="Media &amp; Communications"
+                    autocomplete="off"
+                  >
+                </div>
+                <div class="field field--quota">
+                  <label for="pos1-quota">Vacancies Quota</label>
+                  <input
+                    id="pos1-quota"
+                    name="pos1-quota"
+                    type="number"
+                    value="3"
+                    min="1"
+                    autocomplete="off"
+                  >
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos1-desc">Role Description</label>
+                  <textarea id="pos1-desc" name="pos1-desc" rows="3">Write engaging social media posts, press copy, and brainstorm thematic campaign narratives.</textarea>
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos1-skills">Requirements &amp; Skills</label>
+                  <textarea id="pos1-skills" name="pos1-skills" rows="3">Strong copywriting skills, familiarity with university channels, creative storytelling</textarea>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </article><!-- /position 1 -->
+
+        <!-- Position 2: Event Operations -->
+        <article class="position-card" aria-label="Position: Event Operations">
+          <div class="position-card-header">
+            <div class="position-card-title">
+              <span class="dept-icon" aria-hidden="true">📋</span>
+              <div>
+                <h3>Event Operations</h3>
+                <span class="dept-label">Department: Logistics &amp; Planning</span>
+              </div>
+            </div>
+            <div class="actions">
+              <span class="openings-badge">5 Openings</span>
+              <button class="button button-secondary button-small" type="button" aria-label="Remove Event Operations position">Remove</button>
+            </div>
+          </div>
+
+          <div class="position-card-body">
+            <fieldset>
+              <legend class="sr-only">Event Operations position details</legend>
+              <div class="position-fields-row">
+                <div class="field">
+                  <label for="pos2-title">Role Title</label>
+                  <input
+                    id="pos2-title"
+                    name="pos2-title"
+                    type="text"
+                    value="Event Operations Coordinator"
+                    autocomplete="off"
+                  >
+                </div>
+                <div class="field">
+                  <label for="pos2-dept">Department / Team</label>
+                  <input
+                    id="pos2-dept"
+                    name="pos2-dept"
+                    type="text"
+                    value="Logistics &amp; Planning"
+                    autocomplete="off"
+                  >
+                </div>
+                <div class="field field--quota">
+                  <label for="pos2-quota">Vacancies Quota</label>
+                  <input
+                    id="pos2-quota"
+                    name="pos2-quota"
+                    type="number"
+                    value="5"
+                    min="1"
+                    autocomplete="off"
+                  >
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos2-desc">Role Description</label>
+                  <textarea id="pos2-desc" name="pos2-desc" rows="3">Support on-ground logistics, venue booking coordination, and stage management during events.</textarea>
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos2-skills">Requirements &amp; Skills</label>
+                  <textarea id="pos2-skills" name="pos2-skills" rows="3">Teamwork, problem-solving under pressure, on-site event coordination experience</textarea>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </article><!-- /position 2 -->
+
+        <!-- Position 3: Design & Media -->
+        <article class="position-card" aria-label="Position: Design &amp; Media">
+          <div class="position-card-header">
+            <div class="position-card-title">
+              <span class="dept-icon" aria-hidden="true">🎨</span>
+              <div>
+                <h3>Design &amp; Media</h3>
+                <span class="dept-label">Department: Creative Arts</span>
+              </div>
+            </div>
+            <div class="actions">
+              <span class="openings-badge">2 Openings</span>
+              <button class="button button-secondary button-small" type="button" aria-label="Remove Design and Media position">Remove</button>
+            </div>
+          </div>
+
+          <div class="position-card-body">
+            <fieldset>
+              <legend class="sr-only">Design &amp; Media position details</legend>
+              <div class="position-fields-row">
+                <div class="field">
+                  <label for="pos3-title">Role Title</label>
+                  <input
+                    id="pos3-title"
+                    name="pos3-title"
+                    type="text"
+                    value="Media &amp; Visual Designer"
+                    autocomplete="off"
+                  >
+                </div>
+                <div class="field">
+                  <label for="pos3-dept">Department / Team</label>
+                  <input
+                    id="pos3-dept"
+                    name="pos3-dept"
+                    type="text"
+                    value="Creative Arts"
+                    autocomplete="off"
+                  >
+                </div>
+                <div class="field field--quota">
+                  <label for="pos3-quota">Vacancies Quota</label>
+                  <input
+                    id="pos3-quota"
+                    name="pos3-quota"
+                    type="number"
+                    value="2"
+                    min="1"
+                    autocomplete="off"
+                  >
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos3-desc">Role Description</label>
+                  <textarea id="pos3-desc" name="pos3-desc" rows="3">Produce poster designs, stage visuals, digital flyers, and assist with club event photography.</textarea>
+                </div>
+              </div>
+              <div class="field-row field-row--full">
+                <div class="field">
+                  <label for="pos3-skills">Requirements &amp; Skills</label>
+                  <textarea id="pos3-skills" name="pos3-skills" rows="3">Proficiency in Canva / Adobe Creative Suite, basic photography, visual design portfolio</textarea>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </article><!-- /position 3 -->
+
+      </section><!-- /section 2 -->
+
+      <!-- ── Bottom action bar ──────────────────────────────────────────── -->
+      <div class="campaign-bottom-actions">
+        <button class="button button-secondary" type="button">Save as Draft</button>
+        <!-- Primary action: submits form → applications.html -->
+        <button class="button button-primary" type="submit">Publish Campaign</button>
+      </div>
+
+    </form><!-- /campaign form -->
+
+  </main>
+
+  <!-- ── App shell: footer ──────────────────────────────────────────────── -->
+  <footer class="app-footer">
+    <p>ClubFlow · SAB Recruitment 2026 · Student project for CSC13008.</p>
+  </footer>
+
+</body>
+</html>
