@@ -923,7 +923,7 @@ tr.is-open {
   margin-bottom: var(--space-1);
 }
 
-/* Title row: h1 + disabled Approve button side by side at wider widths */
+/* Title row: description div + action buttons side by side at wider widths */
 .schedule-title-row {
   display: flex;
   flex-direction: column;
@@ -931,20 +931,21 @@ tr.is-open {
   margin-bottom: var(--space-3);
 }
 
+/* Export + Approve group — flex: none prevents the Approve button from wrapping */
+.schedule-title-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  flex: none;
+  align-items: flex-start;
+}
+
 /* Summary stat cards: reuse the shared .stats grid and .stat/.card base.
-   .schedule-stat only adds the compact column layout and label sizing on top. */
+   .schedule-stat only adds the flex column layout on top. */
 .schedule-stat {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-}
-
-.schedule-stat dt {
-  font-size: 0.875rem;
-}
-
-.schedule-stat .stat-note {
-  font-size: 0.875rem;
 }
 
 .stat-conflict .stat-value {
@@ -990,7 +991,7 @@ tr.is-open {
   display: inline-block;
   padding: 0 var(--space-2);
   border-radius: var(--radius);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1069,7 +1070,7 @@ tr.is-open {
 
 .showing-count {
   color: var(--color-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
   white-space: nowrap;
   margin: 0;
 }
@@ -1083,6 +1084,11 @@ tr.is-open {
   background: var(--color-bg);
 }
 
+/* Date cell: prevent line breaks in date strings */
+.cell-date {
+  white-space: nowrap;
+}
+
 /* Time slot cell */
 .time-slot {
   font-variant-numeric: tabular-nums;
@@ -1094,15 +1100,6 @@ tr.is-open {
   font-weight: 700;
 }
 
-/* Interviewer conflict highlight */
-.interviewer-conflict {
-  color: var(--color-danger);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-
 /* Unassigned cell text */
 .cell-unassigned {
   color: var(--color-muted);
@@ -1112,13 +1109,13 @@ tr.is-open {
 /* Unassigned reason sub-line */
 .cell-reason {
   display: block;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   color: var(--color-muted);
   font-style: normal;
   overflow-wrap: anywhere;
 }
 
-/* Avatar initials (smaller than the shared .avatar) */
+/* Avatar initials (smaller than the shared .avatar; min 0.875rem per spec) */
 .avatar-sm {
   display: inline-flex;
   align-items: center;
@@ -1130,7 +1127,7 @@ tr.is-open {
   background: #dbeafe;
   color: #1e3a8a;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .applicant-cell {
@@ -1159,7 +1156,7 @@ tr.is-open {
 
 .table-count-note {
   color: var(--color-muted);
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -1176,7 +1173,7 @@ tr.is-open {
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--color-muted);
 }
 
@@ -1188,8 +1185,8 @@ tr.is-open {
   flex: none;
 }
 
-.legend-dot-proposed { background: #16a34a; }
-.legend-dot-conflict { background: var(--color-danger); }
+.legend-dot-proposed   { background: #16a34a; }
+.legend-dot-conflict   { background: var(--color-danger); }
 .legend-dot-unassigned { background: var(--color-border); }
 
 /* Bottom action bar */
@@ -1197,7 +1194,6 @@ tr.is-open {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
   gap: var(--space-2);
   padding: var(--space-3) 0;
   border-top: 1px solid var(--color-line);
@@ -1228,11 +1224,6 @@ tr.is-open {
 /* Laptop: 1280 px */
 @media (min-width: 1280px) {
   .params-fields {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  /* Assigned panelists field spans the last two columns at 1280 */
-  .params-fields .field--panelists {
-    grid-column: span 2;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

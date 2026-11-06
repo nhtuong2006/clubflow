@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interview Scheduling — ClubFlow</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <p class="brand">ClubFlow</p>
+    <p class="campaign-name">SAB Recruitment 2026 <span class="badge badge-info">Draft Schedule</span></p>
+    <p class="user">Phan Hải Yến <span class="user-role">SAB Executive</span></p>
+  </header>
+
+  <nav class="app-nav" aria-label="Main">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="index.html">Recruitment Campaigns</a></li>
+      <li><a class="nav-link" href="applications.html">Applications</a></li>
+      <li><a class="nav-link" href="schedule.html" aria-current="page">Interview Schedule</a></li>
+    </ul>
+  </nav>
+
+  <main class="app-main">
+
+    <!-- Page title block -->
+    <div class="schedule-page-title">
+      <div class="schedule-title-row">
+        <div>
+          <h1>Interview Scheduling</h1>
+          <p class="lead">Generate a proposed schedule for shortlisted applicants, review assignments, resolve conflicts, and confirm the final schedule.</p>
+        </div>
+        <!-- Export and Approve live here; flex: none keeps Approve from wrapping -->
+        <div class="schedule-title-actions">
+          <button class="button button-secondary" type="button">Export Timetable</button>
+          <button
+            class="button button-primary"
+            type="button"
+            disabled
+            aria-describedby="approve-blocked-reason"
+          >Approve &amp; Confirm Schedule</button>
+        </div>
+      </div>
+      <p id="approve-blocked-reason" class="meta">
+        Schedule cannot be confirmed: 1 conflict and 2 unassigned applications remain.
+      </p>
+    </div>
+
+    <!-- ── Summary stat cards ───────────────────────────────────────────── -->
+    <dl class="stats">
+      <div class="card stat schedule-stat">
+        <dt>Shortlisted Applications</dt>
+        <dd class="stat-value">8</dd>
+        <dd class="stat-note">candidates</dd>
+      </div>
+      <div class="card stat schedule-stat">
+        <dt>Scheduled Interviews</dt>
+        <dd class="stat-value">6</dd>
+        <dd class="stat-note">sessions with a slot</dd>
+      </div>
+      <div class="card stat schedule-stat">
+        <dt>Unassigned Applications</dt>
+        <dd class="stat-value">2</dd>
+        <dd class="stat-note">need a slot</dd>
+      </div>
+      <div class="card stat schedule-stat stat-conflict">
+        <dt>Scheduling Conflicts</dt>
+        <dd class="stat-value">1</dd>
+        <dd class="stat-note">affects 2 interviews</dd>
+      </div>
+    </dl>
+
+    <!-- ── Conflict banner ──────────────────────────────────────────────── -->
+    <div class="conflict-banner" role="alert">
+      <span class="conflict-banner-icon" aria-hidden="true">⚠</span>
+      <div class="conflict-banner-body">
+        <p class="conflict-banner-title">
+          Scheduling conflict detected
+          <span class="conflict-tag">Action needed</span>
+        </p>
+        <p>
+          1 conflict affects 2 interviews:
+          <strong>Phạm Quốc Bảo</strong> (S20241280) is booked twice at
+          <strong>10:20–10:40</strong> — Design &amp; Media with Đặng Ngọc Hân in Room C,
+          and Event Operations with Cao Thanh Tùng in Room B.
+          Approve &amp; Confirm Schedule is blocked until this is resolved.
+        </p>
+      </div>
+      <div class="conflict-banner-action">
+        <button class="button button-secondary" type="button">Resolve Conflict</button>
+      </div>
+    </div>
+
+    <!-- ── Scheduling parameters form ───────────────────────────────────── -->
+    <section class="params-section" aria-labelledby="params-title">
+      <div class="params-header">
+        <h2 id="params-title">Scheduling Parameters</h2>
+        <button class="button button-secondary" type="button">Regenerate Schedule</button>
+      </div>
+
+      <form aria-label="Scheduling parameters" novalidate>
+        <div class="params-fields">
+          <div class="field">
+            <label for="param-date">Target Date</label>
+            <input id="param-date" name="param-date" type="date" value="2026-11-21">
+          </div>
+          <div class="field">
+            <label for="param-window">Time Window</label>
+            <input id="param-window" name="param-window" type="text" value="09:00 – 12:00" readonly>
+          </div>
+          <div class="field">
+            <label for="param-slot">Slot Duration</label>
+            <select id="param-slot" name="param-slot">
+              <option selected>20 min per session</option>
+              <option>30 min per session</option>
+              <option>15 min per session</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="param-rooms">Active Rooms</label>
+            <input id="param-rooms" name="param-rooms" type="text" value="3 rooms: A, B, C" readonly>
+          </div>
+          <div class="field">
+            <label for="param-interviewers">Interviewers</label>
+            <input id="param-interviewers" name="param-interviewers" type="text" value="Lý Hoàng Nam, Đặng Ngọc Hân, Cao Thanh Tùng" readonly>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ── Schedule table ───────────────────────────────────────────────── -->
+    <section class="schedule-section" aria-labelledby="table-section-title">
+      <h2 id="table-section-title" class="sr-only">Interview Schedule</h2>
+
+      <!-- Toolbar -->
+      <div class="schedule-toolbar">
+        <div class="field">
+          <label for="table-search">Search applicant, interviewer, or room</label>
+          <input id="table-search" name="table-search" type="search">
+        </div>
+        <div class="toolbar-right">
+          <div class="field">
+            <label for="filter-status">Filter by status</label>
+            <select id="filter-status" name="filter-status">
+              <option>All Slot Statuses</option>
+              <option>Proposed</option>
+              <option>Conflict</option>
+              <option>Unassigned</option>
+            </select>
+          </div>
+          <button class="button button-secondary" type="button">Save Changes</button>
+          <p class="showing-count">Showing <strong>8</strong> candidates</p>
+        </div>
+      </div>
+
+      <!-- Scrollable table region -->
+      <div
+        class="table-wrap"
+        role="region"
+        aria-labelledby="schedule-table-caption"
+        tabindex="0"
+      >
+        <table>
+          <caption id="schedule-table-caption">
+            Interview schedule for SAB Recruitment 2026 — Sat 21 Nov 2026, 8 candidates
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Applicant Name &amp; ID</th>
+              <th scope="col">Position Applied</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time Slot</th>
+              <th scope="col">Assigned Interviewer</th>
+              <th scope="col">Assigned Room</th>
+              <th scope="col">Schedule Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Row 1: Nguyễn Minh Anh — Proposed -->
+            <tr>
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">MA</span>
+                  <span>
+                    <span class="applicant-name">Nguyễn Minh Anh</span>
+                    <span class="cell-sub">S20241088</span>
+                  </span>
+                </div>
+              </th>
+              <td>Content Team</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot">09:00–09:20</td>
+              <td>Lý Hoàng Nam</td>
+              <td>Room A (Media Lab)</td>
+              <td><span class="badge badge-ok">Proposed</span></td>
+              <td><button class="button button-small button-secondary" type="button" aria-label="Edit slot for Nguyễn Minh Anh">Edit</button></td>
+            </tr>
+
+            <!-- Row 2: Lê Thu Hà — Proposed -->
+            <tr>
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">TH</span>
+                  <span>
+                    <span class="applicant-name">Lê Thu Hà</span>
+                    <span class="cell-sub">S20240954</span>
+                  </span>
+                </div>
+              </th>
+              <td>Content Team</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot">09:20–09:40</td>
+              <td>Lý Hoàng Nam</td>
+              <td>Room A (Media Lab)</td>
+              <td><span class="badge badge-ok">Proposed</span></td>
+              <td><button class="button button-small button-secondary" type="button" aria-label="Edit slot for Lê Thu Hà">Edit</button></td>
+            </tr>
+
+            <!-- Row 3: Trần Gia Huy — Proposed -->
+            <tr>
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">GH</span>
+                  <span>
+                    <span class="applicant-name">Trần Gia Huy</span>
+                    <span class="cell-sub">S20241102</span>
+                  </span>
+                </div>
+              </th>
+              <td>Event Operations</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot">09:00–09:20</td>
+              <td>Cao Thanh Tùng</td>
+              <td>Room B (Conference Room)</td>
+              <td><span class="badge badge-ok">Proposed</span></td>
+              <td><button class="button button-small button-secondary" type="button" aria-label="Edit slot for Trần Gia Huy">Edit</button></td>
+            </tr>
+
+            <!-- Row 4: Đỗ Đức Thắng — Proposed -->
+            <tr>
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">DT</span>
+                  <span>
+                    <span class="applicant-name">Đỗ Đức Thắng</span>
+                    <span class="cell-sub">S20240741</span>
+                  </span>
+                </div>
+              </th>
+              <td>Event Operations</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot">09:20–09:40</td>
+              <td>Cao Thanh Tùng</td>
+              <td>Room B (Conference Room)</td>
+              <td><span class="badge badge-ok">Proposed</span></td>
+              <td><button class="button button-small button-secondary" type="button" aria-label="Edit slot for Đỗ Đức Thắng">Edit</button></td>
+            </tr>
+
+            <!-- Row 5: Phạm Quốc Bảo (Design & Media) — CONFLICT -->
+            <tr class="row-conflict">
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">QB</span>
+                  <span>
+                    <span class="applicant-name">Phạm Quốc Bảo</span>
+                    <span class="cell-sub">S20241280</span>
+                  </span>
+                </div>
+              </th>
+              <td>Design &amp; Media</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot time-slot-conflict" aria-label="Time slot 10:20 to 10:40 — conflict">10:20–10:40 ⚠</td>
+              <td>Đặng Ngọc Hân</td>
+              <td>Room C (Studio)</td>
+              <td><span class="badge badge-no">Conflict</span></td>
+              <td><button class="button button-small button-danger" type="button" aria-label="Resolve conflict for Phạm Quốc Bảo, Design and Media">Resolve</button></td>
+            </tr>
+
+            <!-- Row 6: Phạm Quốc Bảo (Event Operations) — CONFLICT -->
+            <tr class="row-conflict">
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">QB</span>
+                  <span>
+                    <span class="applicant-name">Phạm Quốc Bảo</span>
+                    <span class="cell-sub">S20241280</span>
+                  </span>
+                </div>
+              </th>
+              <td>Event Operations</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="time-slot time-slot-conflict" aria-label="Time slot 10:20 to 10:40 — conflict">10:20–10:40 ⚠</td>
+              <td>Cao Thanh Tùng</td>
+              <td>Room B (Conference Room)</td>
+              <td><span class="badge badge-no">Conflict</span></td>
+              <td><button class="button button-small button-danger" type="button" aria-label="Resolve conflict for Phạm Quốc Bảo, Event Operations">Resolve</button></td>
+            </tr>
+
+            <!-- Row 7: Bùi Quang Huy — Unassigned -->
+            <tr class="row-unassigned">
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">BH</span>
+                  <span>
+                    <span class="applicant-name">Bùi Quang Huy</span>
+                    <span class="cell-sub">S20240321</span>
+                  </span>
+                </div>
+              </th>
+              <td>Design &amp; Media</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td><span class="badge badge-pending">Unassigned</span></td>
+              <td>
+                <button class="button button-small button-secondary" type="button" aria-label="+ Assign Slot for Bùi Quang Huy">
+                  + Assign Slot
+                </button>
+                <span class="cell-reason">No shared available time with a qualified interviewer</span>
+              </td>
+            </tr>
+
+            <!-- Row 8: Hoàng Thảo Vy — Unassigned -->
+            <tr class="row-unassigned">
+              <th scope="row">
+                <div class="applicant-cell">
+                  <span class="avatar-sm" aria-hidden="true">TV</span>
+                  <span>
+                    <span class="applicant-name">Hoàng Thảo Vy</span>
+                    <span class="cell-sub">S20240812</span>
+                  </span>
+                </div>
+              </th>
+              <td>Content Team</td>
+              <td class="cell-date">21 Nov 2026</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td class="cell-unassigned">Unassigned</td>
+              <td><span class="badge badge-pending">Unassigned</span></td>
+              <td>
+                <button class="button button-small button-secondary" type="button" aria-label="+ Assign Slot for Hoàng Thảo Vy">
+                  + Assign Slot
+                </button>
+                <span class="cell-reason">No free room in the time window for a qualified interviewer</span>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div><!-- /table-wrap -->
+
+      <!-- Table footer / legend -->
+      <div class="schedule-table-footer">
+        <p class="table-count-note">
+          Showing all 8 candidates in SAB Recruitment 2026 interview roster
+        </p>
+        <ul class="legend" aria-label="Schedule status legend">
+          <li class="legend-item">
+            <span class="legend-dot legend-dot-proposed" aria-hidden="true"></span>
+            4 Proposed
+          </li>
+          <li class="legend-item">
+            <span class="legend-dot legend-dot-conflict" aria-hidden="true"></span>
+            2 Conflict
+          </li>
+          <li class="legend-item">
+            <span class="legend-dot legend-dot-unassigned" aria-hidden="true"></span>
+            2 Unassigned
+          </li>
+        </ul>
+      </div>
+
+    </section><!-- /schedule-section -->
+
+    <!-- ── Bottom action bar ─────────────────────────────────────────────── -->
+    <div class="schedule-bottom-actions" role="group" aria-label="Schedule actions">
+      <a class="button button-secondary" href="applications.html">← Back to Applications</a>
+    </div>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>ClubFlow · SAB Recruitment 2026 · Student project for CSC13008.</p>
+  </footer>
+
+</body>
+</html>
