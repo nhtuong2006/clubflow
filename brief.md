@@ -5,7 +5,7 @@ Assistants: Claude (claude.ai chat) for planning, prompt writing and review; Kir
 
 ## Member A — Đào Duy Long (24127443)
  
-I used two tools. **Claude** (claude.ai chat) helped me plan, wrote the prompts, and reviewed my pages after I pasted my files into it. **Kiro** (an agentic session inside the repository) read the files and built and edited `index.html`, `schedule.html` and the page CSS. The prompts for Kiro were written in the Claude chat and pasted into Kiro; they are copied below as sent, in order. My messages to Claude were written in Vietnamese; I translated them into English here and marked them.
+I used two tools. **Claude** (claude.ai chat) helped me plan, wrote the prompts, and reviewed my pages after I pasted my files into it. **Kiro** (an agentic session inside the repository) read the files and built and edited `index.html`, `schedule.html` and the page CSS. The prompts for Kiro were written in the Claude chat and pasted into Kiro; they are copied below as sent, in order.
  
 
 ### What Kiro reads before every prompt (the constraints)
@@ -19,7 +19,7 @@ How "done" is checked, from `CLAUDE.md` (Kiro was told to follow it, and I run t
 - The W3C checker (validator.w3.org/nu, File upload) shows 0 errors for every page.
 - DevTools → Elements → Accessibility: landmarks, one heading outline, a name on every control.
 
-### Messages to Claude, before the build (translated from Vietnamese)
+### Messages to Claude, before the build
  
 1. I attached the ClubFlow brief, the PA#2 rubric and the assignment text, and wrote: "what should I do with PA2, 2 members in team, plan for this ex".
 2. I attached a screenshot of our work split (Tường: `applications.html` and the shared CSS; me: `index.html` and `schedule.html`, plus the shared sample data file) and wrote: "I am Long, so what do I need to do now?"
@@ -141,7 +141,7 @@ did not run.
 Note: the counts in this prompt (5 + 1 + 2) came from the brief's own wrong numbers. `CLUBFLOW-DATA.md` says 4 + 2 + 2, and I told Kiro to use the data file first ("Use … exactly as written there"). The pages follow `CLUBFLOW-DATA.md`.
  
 
-### Messages to Claude, after the first builds (translated from Vietnamese)
+### Messages to Claude, after the first builds
  
 4. I pasted `index.html`, `campaign.css`, `styles.css` and Kiro's report and wrote: "check for me whether it looks like the image".
 5. "what is the fix prompt?"
@@ -206,7 +206,7 @@ W3C validator, JavaScript off. Do not claim a check you did not run.
 ```
  
 
-### Messages to Claude, after the schedule build (translated from Vietnamese)
+### Messages to Claude, after the schedule build
  
 6. I pasted `schedule.html` and `schedule.css` and wrote: "is it ok, what needs fixing".
 7. I pasted the updated `CLAUDE.md`, `CLUBFLOW-DATA.md`, `PROTOTYPE.md`, `brief.md` and the three screens and wrote: "look at these so it is clearer". Then: "these were changed, so the prompts need to be rewritten to fit".
@@ -243,7 +243,7 @@ styles.css. Do not claim a check you did not run.
 ```
  
 
-### Messages to Claude, after the merge (translated from Vietnamese)
+### Messages to Claude, after the merge
  
 8. I pasted Kiro's merge report and wrote: "is there any violation?"
 
@@ -314,7 +314,7 @@ href="#", spacing tokens only. Report what you changed and which checks you actu
 ```
  
 
-### Messages to Claude, last (translated from Vietnamese)
+### Messages to Claude, last
  
 9. I pasted Kiro's report for the `index.html` second pass and wrote: "any violations?"
 10. "so now only one style file is needed?"
@@ -410,7 +410,7 @@ and the detail panel for the open application, with no JavaScript. Keep the shar
 
 ### Follow-up questions
 
-After Prompts 1–4 I only asked short follow-up questions in the same chat, in Vietnamese
+After Prompts 1–4 I only asked short follow-up questions in the same chat
 (for example how to run the browser checks, and what to change after a check).
 They add no new constraints, so they are not repeated here.
 A review of my 360 px screenshot was done in a separate claude.ai chat (a different account).
