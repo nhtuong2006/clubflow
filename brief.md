@@ -7,9 +7,10 @@ Assistants: Claude (claude.ai chat) for planning, prompt writing and review; Kir
  
 I used two tools. **Claude** (claude.ai chat) helped me plan, wrote the prompts, and reviewed my pages after I pasted my files into it. **Kiro** (an agentic session inside the repository) read the files and built and edited `index.html`, `schedule.html` and the page CSS. The prompts for Kiro were written in the Claude chat and pasted into Kiro; they are copied below as sent, in order. My messages to Claude were written in Vietnamese; I translated them into English here and marked them.
  
+
 ### What Kiro reads before every prompt (the constraints)
  
-Each Kiro prompt starts with "Read CLAUDE.md (and CLUBFLOW-DATA.md) first and follow them". `CLAUDE.md` is the rules file at the root of our repository and carries the constraints an assistant breaks when nobody says them: the stack (static HTML and plain CSS, one stylesheet `css/styles.css`, no framework, no build step, no CDN, no JavaScript), the spacing scale `--space-1` … `--space-6` (4, 8, 16, 24, 32, 48 px), mobile first with `min-width` breakpoints at 768 and 1280 px, no fixed widths, no `overflow-x: hidden`, body text 16 px or larger, 44 px tap targets, the semantic rules (landmarks, one `<h1>`, a `<label>` on every input, buttons versus links), relative links only, no `href="#"`, no `onclick`, no `!important`, no "verified" wording, and the data rule (use `CLUBFLOW-DATA.md` exactly). The three PA#1 screens are in `docs/pa1/`.
+Kiro prompts 1, 2 and 4–7 tell Kiro to read `CLAUDE.md` (and `CLUBFLOW-DATA.md`) first and follow them (Prompts 1 and 2 as the first item of a "READ FIRST" list); Prompt 3 is a review checklist. `CLAUDE.md` is the rules file at the root of our repository and carries the constraints an assistant breaks when nobody says them: the stack (static HTML and plain CSS, one stylesheet `css/styles.css`, no framework, no build step, no CDN, no JavaScript), the spacing scale `--space-1` … `--space-6` (4, 8, 16, 24, 32, 48 px), mobile first with `min-width` breakpoints at 768 and 1280 px, no fixed widths, no `overflow-x: hidden`, body text 16 px or larger, 44 px tap targets, the semantic rules (landmarks, one `<h1>`, a `<label>` on every input, buttons versus links), relative links only, no `href="#"`, no `onclick`, no `!important`, no "verified" wording, and the data rule (use `CLUBFLOW-DATA.md` exactly). The three PA#1 screens are in `docs/pa1/`.
  
 How "done" is checked, from `CLAUDE.md` (Kiro was told to follow it, and I run these checks myself in Chrome):
  
@@ -17,11 +18,13 @@ How "done" is checked, from `CLAUDE.md` (Kiro was told to follow it, and I run t
 - JavaScript off (DevTools → Ctrl+Shift+P → Disable JavaScript): every page still shows all its content.
 - The W3C checker (validator.w3.org/nu, File upload) shows 0 errors for every page.
 - DevTools → Elements → Accessibility: landmarks, one heading outline, a name on every control.
+
 ### Messages to Claude, before the build (translated from Vietnamese)
  
 1. I attached the ClubFlow brief, the PA#2 rubric and the assignment text, and wrote: "what should I do with PA2, 2 members in team, plan for this ex".
 2. I attached a screenshot of our work split (Tường: `applications.html` and the shared CSS; me: `index.html` and `schedule.html`, plus the shared sample data file) and wrote: "I am Long, so what do I need to do now?"
 3. I attached a screenshot of the repository folder structure and wrote: "this is the folder structure, write me the right prompts for my work, in English".
+
 ### Prompt 1 — Kiro: build index.html (first version)
  
 ```
@@ -74,6 +77,7 @@ classes you reused, (3) anything in styles.css you wanted to change but did not,
 can ask my teammate. Do not run or claim any check you did not run.
 ```
  
+
 ### Prompt 2 — Kiro: build schedule.html (first version)
  
 ```
@@ -136,10 +140,12 @@ did not run.
  
 Note: the counts in this prompt (5 + 1 + 2) came from the brief's own wrong numbers. `CLUBFLOW-DATA.md` says 4 + 2 + 2, and I told Kiro to use the data file first ("Use … exactly as written there"). The pages follow `CLUBFLOW-DATA.md`.
  
+
 ### Messages to Claude, after the first builds (translated from Vietnamese)
  
 4. I pasted `index.html`, `campaign.css`, `styles.css` and Kiro's report and wrote: "check for me whether it looks like the image".
 5. "what is the fix prompt?"
+
 ### Prompt 3 — Kiro: review both pages (review only)
  
 ```
@@ -159,6 +165,7 @@ Be explicit about which of these you actually verified by reading the code and w
 need a real browser check.
 ```
  
+
 ### Prompt 4 — Kiro: fix index.html (after the Claude review)
  
 ```
@@ -198,10 +205,12 @@ and (3) which of these checks you actually ran: horizontal scroll at 360, 768 an
 W3C validator, JavaScript off. Do not claim a check you did not run.
 ```
  
+
 ### Messages to Claude, after the schedule build (translated from Vietnamese)
  
 6. I pasted `schedule.html` and `schedule.css` and wrote: "is it ok, what needs fixing".
 7. I pasted the updated `CLAUDE.md`, `CLUBFLOW-DATA.md`, `PROTOTYPE.md`, `brief.md` and the three screens and wrote: "look at these so it is clearer". Then: "these were changed, so the prompts need to be rewritten to fit".
+
 ### Prompt 5 — Kiro: merge the page stylesheets into css/styles.css
  
 (Our `CLAUDE.md` says "one stylesheet: css/styles.css", but the first two prompts had told Kiro to create `css/campaign.css` and `css/schedule.css`. This prompt fixes that.)
@@ -233,9 +242,11 @@ Report: which rules you merged, which you deduplicated, which you reused from
 styles.css. Do not claim a check you did not run.
 ```
  
+
 ### Messages to Claude, after the merge (translated from Vietnamese)
  
 8. I pasted Kiro's merge report and wrote: "is there any violation?"
+
 ### Prompt 6 — Kiro: fix index.html (second pass)
  
 ```
@@ -269,6 +280,7 @@ Report what you changed and which checks you ran (scroll at 360/768/1280, JS off
 W3C). Do not claim a check you did not run.
 ```
  
+
 ### Prompt 7 — Kiro: fix schedule.html (after the Claude review)
  
 ```
@@ -301,11 +313,13 @@ Same rules as always: no !important, no inline style, no onclick, no JavaScript,
 href="#", spacing tokens only. Report what you changed and which checks you actually ran.
 ```
  
+
 ### Messages to Claude, last (translated from Vietnamese)
  
 9. I pasted Kiro's report for the `index.html` second pass and wrote: "any violations?"
 10. "so now only one style file is needed?"
 11. I pasted my part of `AI-LOG.md` and asked whether it was good enough; later I asked Claude to complete it from what I did.
+
 ### How I check the result myself
  
 After each Kiro prompt I open the page in Chrome, and I run the four checks from "How done is checked" above (scroll, JavaScript off, W3C, Accessibility pane) at 360, 768 and 1280 px; the results are in `checks/` and `screenshots/` and in the last entry of `AI-LOG.md`.
@@ -396,9 +410,6 @@ and the detail panel for the open application, with no JavaScript. Keep the shar
 
 ### Follow-up questions
 
-- Long item test: "Add a very long position title to one table row to test the layout at 360 px."
-- Checks: "Give me step-by-step instructions to check applications.html the way the marking script does."
-- Screenshot check: "Here is my 360 px screenshot. What looks wrong?"
 After Prompts 1–4 I only asked short follow-up questions in the same chat, in Vietnamese
 (for example how to run the browser checks, and what to change after a check).
 They add no new constraints, so they are not repeated here.
