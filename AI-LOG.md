@@ -10,7 +10,7 @@ Tools: **Kiro** (agentic session in the repository: it reads and edits the files
 ### 2026-11-05 — index.html and css/campaign.css, first version (Screen 1)
 Tool: Kiro.
 
-Asked for: read CLAUDE.md, CLUBFLOW-DATA.md, css/styles.css, applications.html and screen1-create-campaign.png, then build the "Create Recruitment Campaign" page: static HTML, mobile first, semantic, no JavaScript, data exactly as in CLUBFLOW-DATA.md, the brief's "Fix these" items applied.
+Asked for: read CLAUDE.md, CLUBFLOW-DATA.md, css/styles.css, applications.html and screen1-create-campaign.png, then build the "Create Recruitment Campaign" page: static HTML, mobile first, semantic, no JavaScript, data exactly as in CLUBFLOW-DATA.md, the brief's "Fix these" items applied. (Full prompt: brief.md, Prompt 1.)
 
 Kept: the app shell copied from applications.html; the two-section form; three position cards (quotas 3, 5, 2); `<form action="applications.html">` so Publish Campaign opens the next page; not-wired buttons as `type="button"`; spacing tokens from styles.css.
 
@@ -36,7 +36,7 @@ By hand: I pasted my files into Claude and read the report, then copied its fix 
 ### 2026-11-05 — Fix index.html and css/campaign.css (the six problems)
 Tool: Kiro.
 
-Asked for: fix the differences from the previous entry without rewriting the page.
+Asked for: fix the differences from the previous entry without rewriting the page. (Full prompt: brief.md, Prompt 4.)
 
 Kept: all content and structure.
 
@@ -49,7 +49,7 @@ By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: `field-r
 ### 2026-11-05 — schedule.html and css/schedule.css, first version (Screen 3)
 Tool: Kiro.
 
-Asked for: read CLAUDE.md, CLUBFLOW-DATA.md, css/styles.css, applications.html and screen3-interview-scheduling.png, then build the "Interview Scheduling" page: static, mobile first, 8-row table in a scrolling wrapper, conflict banner, parameters form, data exactly as in CLUBFLOW-DATA.md.
+Asked for: read CLAUDE.md, CLUBFLOW-DATA.md, css/styles.css, applications.html and screen3-interview-scheduling.png, then build the "Interview Scheduling" page: static, mobile first, 8-row table in a scrolling wrapper, conflict banner, parameters form, data exactly as in CLUBFLOW-DATA.md. (Full prompt: brief.md, Prompt 2.)
 
 Kept: the app shell; four stat cards (8, 6, 2, 1); the conflict banner; the 8-row table in `.table-wrap` with `tabindex="0"` and a `<caption>`; `disabled` on Approve & Confirm Schedule with `aria-describedby` pointing to the reason.
 
@@ -62,7 +62,7 @@ By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: all 8 ap
 ### 2026-11-05 — Kiro reviewed both pages against a nine-point checklist (review only)
 Tool: Kiro.
 
-Asked for: list problems only (overflow, fixed widths / `overflow-x: hidden` / `!important`, headings, labels and alt, links and `onclick`, 44 px targets, spacing tokens, contrast, W3C errors); fix nothing.
+Asked for: list problems only (overflow, fixed widths / `overflow-x: hidden` / `!important`, headings, labels and alt, links and `onclick`, 44 px targets, spacing tokens, contrast, W3C errors); fix nothing. (Full prompt: brief.md, Prompt 3.)
 
 Kept: no changes.
 
@@ -88,7 +88,7 @@ By hand: I pasted my files into Claude and read the report, then copied its fix 
 ### 2026-11-06 — One stylesheet: merge campaign.css and schedule.css into css/styles.css
 Tool: Claude (claude.ai chat) found the problem; Kiro did the merge.
 
-Asked for: append both files to css/styles.css as sections 7 (index.html) and 8 (schedule.html) with comment headings, define duplicates once, reuse shared classes, remove the two extra `<link>` tags, do not edit applications.html or existing sections.
+Asked for: append both files to css/styles.css as sections 7 (index.html) and 8 (schedule.html) with comment headings, define duplicates once, reuse shared classes, remove the two extra `<link>` tags, do not edit applications.html or existing sections. (Full prompt: brief.md, Prompt 5.)
 
 Kept: every existing rule in styles.css unchanged; `.badge`, `.card`, `.field`, `.table-wrap`, `.button*` reused, not copied.
 
@@ -103,7 +103,7 @@ By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: all 97 c
 ### 2026-11-06 — Fix index.html, second pass
 Tool: Kiro.
 
-Asked for: compare index.html with the Screen 1 design and applications.html and fix the app shell, top action bar, fieldset reset, full-width rows, hint spacing, the self-link and spacing tokens, editing only index.html and section 7 of styles.css.
+Asked for: compare index.html with the Screen 1 design and applications.html and fix the app shell, top action bar, fieldset reset, full-width rows, hint spacing, the self-link and spacing tokens, editing only index.html and section 7 of styles.css. (Full prompt: brief.md, Prompt 6.)
 
 Kept: everything that already matched (most items had been fixed in the first fix pass).
 
@@ -116,7 +116,7 @@ By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: the top 
 ### 2026-11-06 — Fix schedule.html and section 8 of css/styles.css
 Tool: Kiro.
 
-Asked for: the nine fixes from the Claude review above.
+Asked for: the nine fixes from the Claude review above. (Full prompt: brief.md, Prompt 7.)
 
 Kept: all CLUBFLOW-DATA.md data (8 candidates, 4 + 2 + 2, the conflict between rows 5 and 6, the legend counts); the app shell already matched applications.html.
 
@@ -190,6 +190,7 @@ Changed: td, th { overflow-wrap: anywhere; } was added to css/styles.css (commit
 Rejected: overflow-x: hidden on the table or the page, because it would hide the scrolling instead of fixing it.
 
 By hand: I re-ran the two Console lines at 360, 768 and 1280 px, re-ran the W3C checker and retook the screenshots.
+
 ### 2026-11-05 — Claude misread my screenshot
 Tool: Claude (claude.ai chat, in a different account from the chat above).
 
