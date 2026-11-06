@@ -715,11 +715,11 @@ tr.is-open {
   font-weight: 700;
 }
 
-/* Hint text below a label */
+/* Hint text below a label — margin-top separates it from the input above */
 .field-hint {
   color: var(--color-muted);
   font-size: 0.875rem;
-  margin: 0;
+  margin: var(--space-1) 0 0;
 }
 
 /* Label row with a meta note or duration badge beside it */
