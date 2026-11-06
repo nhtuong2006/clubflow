@@ -310,6 +310,7 @@ href="#", spacing tokens only. Report what you changed and which checks you actu
  
 After each Kiro prompt I open the page in Chrome, and I run the four checks from "How done is checked" above (scroll, JavaScript off, W3C, Accessibility pane) at 360, 768 and 1280 px; the results are in `checks/` and `screenshots/` and in the last entry of `AI-LOG.md`.
 
+Assistants: Claude (claude.ai) for Member B; Kiro and Claude (claude.ai) for Member A.
 ---
 
 ## Member B — Nguyễn Hữu Tường (24127584)
@@ -394,8 +395,12 @@ a static mobile-first Application Review page with the statistics, the search an
 and the detail panel for the open application, with no JavaScript. Keep the shared stylesheet generic enough that
 `index.html` and `schedule.html` can reuse the header, navigation, footer, cards, badges, buttons and table styles.
 
-### Follow-up prompts (copy the real ones from your chat)
+### Follow-up questions
 
 - Long item test: "Add a very long position title to one table row to test the layout at 360 px."
 - Checks: "Give me step-by-step instructions to check applications.html the way the marking script does."
 - Screenshot check: "Here is my 360 px screenshot. What looks wrong?"
+After Prompts 1–4 I only asked short follow-up questions in the same chat, in Vietnamese
+(for example how to run the browser checks, and what to change after a check).
+They add no new constraints, so they are not repeated here.
+A review of my 360 px screenshot was done in a separate claude.ai chat (a different account).
