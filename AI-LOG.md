@@ -1,4 +1,4 @@
-# AI-LOG — ClubFlow PA#1
+# AI-LOG — ClubFlow PA#2
 Team: Đào Duy Long (24127443) · Nguyễn Hữu Tường (24127584) · CSC13008 · 24KTPM1
 
 ---
@@ -159,14 +159,14 @@ Asked for: turn the PA#1 Screen 2 design and CLUBFLOW-DATA.md into a static, mob
 
 Kept: semantic structure (header, nav, main, footer; one h1; h2/h3 outline; th scope="row" in the table); the table inside a scrolling wrapper; relative links (schedule.html, index.html); sample data from CLUBFLOW-DATA.md (24 applications, 12 + 8 + 4).
 
-Changed: adjusted the shared spacing scale in `css/styles.css` to match the exact requirements of PA#2, ensuring consistency for the upcoming pages.
+Changed: nothing in the first version; I committed the page and css/styles.css as they came (commit 3f6d78a). The spacing scale (4, 8, 16, 24, 32, 48 px) and the shared header, navigation, cards, badges, buttons and table styles were the ones my rules file asks for.
 
 Rejected: the side drawer that covers the list, because the brief says the list and the details must both stay readable at every width with JavaScript off; the detail panel is a normal section beside the list at 1280 px and below it at 768/360 px.
 
 By hand: I ran the checks below and decided what to fix.
 
 ### 2026-11-05 — Checks at 360, 768 and 1280 px (JavaScript off)
-Tool: Claude (same chat), used as a guide for the checks.
+Tool: Claude, used as a guide for the checks.
 
 Asked for: step-by-step instructions to check applications.html the way the marking script does.
 
@@ -179,20 +179,19 @@ Rejected: nothing.
 By hand: I ran every check myself in Chrome DevTools and took the 3 screenshots + the validator screenshot.
 
 ### 2026-11-05 — Long item broke the table at 360 px
-Tool: Claude (same chat).
+Tool: Claude (claude.ai chat).
 
-Asked for: a long English position title in one table row ("Communications and External Relations Coordinator for the New Student Welcome Program") to test that the layout survives it, as the rubric requires.
+Asked for: a long English position title in one table row ("Communications and External Relations Coordinator for the New Student Welcome Program") to test that the layout survives it, as the rubric requires, and to wrap long text in table cells.
 
-Kept: the long title in the Position column, and the matching aria-label on that row's Review button.
+Kept: the long title in the Position column of the sixth row (Lê Văn Khôi), and the matching aria-label on that row's Review button.
 
-Changed: at 360 px the long title pushed the row wider than the viewport. I added `td, th { overflow-wrap: anywhere; }` to css/styles.css. After that the text wraps inside its cell and the page no longer overflows.
+Changed: td, th { overflow-wrap: anywhere; } was added to css/styles.css (commit 910eb27). It landed inside the @media (min-width: 1280px) block, so it applies from 1280 px only. At 360 px the table is wider than the screen and scrolls inside its own wrapper; the page itself does not scroll sideways (scrollWidth > clientWidth prints false, the past-the-right-edge list is []).
 
-Rejected: overflow-x: hidden, because it hides the problem instead of fixing it, which would fail the marker's check.
+Rejected: overflow-x: hidden on the table or the page, because it would hide the scrolling instead of fixing it.
 
-By hand: I re-ran the two Console lines at 360 px (false and []), re-ran the W3C checker and retook the screenshots.
-
+By hand: I re-ran the two Console lines at 360, 768 and 1280 px, re-ran the W3C checker and retook the screenshots.
 ### 2026-11-05 — Claude misread my screenshot
-Tool: Claude (same chat).
+Tool: Claude (claude.ai chat, in a different account from the chat above).
 
 Asked for: a check of a 360 px screenshot of the new long row.
 
