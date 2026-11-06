@@ -599,3 +599,640 @@ tr.is-open {
     overflow-wrap: anywhere;
   }
 }
+
+/* 7. Page: index.html (Create Recruitment Campaign) */
+
+/* Status bar above the form */
+.campaign-status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  min-height: 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-tag-draft {
+  background: #fef3c7;
+  color: #78350f;
+  border: 1px solid #fcd34d;
+}
+
+.status-tag-club {
+  background: #dbeafe;
+  color: #1e3a8a;
+  border: 1px solid #93c5fd;
+}
+
+/* Page title block (complements the shared .page-title) */
+.campaign-page-title {
+  margin-bottom: var(--space-4);
+}
+
+.campaign-page-title h1 {
+  margin-bottom: var(--space-1);
+}
+
+/* Top action bar (Save as Draft / Preview / Publish) */
+.campaign-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+/* Section card with numbered heading */
+.form-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header {
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header h2 {
+  margin-bottom: var(--space-1);
+}
+
+.form-section-header .lead {
+  margin: 0;
+}
+
+/* Section header with an action button on the right */
+.form-section-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.form-section-header-row h2 {
+  margin-bottom: var(--space-1);
+}
+
+/* Fieldset reset inside position cards */
+.position-card-body fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+/* Two-column field rows inside a section (uses the shared .field) */
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Full-width modifier: always one column regardless of breakpoint */
+.field-row--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Required marker (visual only; aria-required carries the semantics) */
+.req {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+/* Hint text below a label */
+.field-hint {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Label row with a meta note or duration badge beside it */
+.date-label-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+}
+
+.duration-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  min-height: var(--space-3);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #fef9c3;
+  color: #713f12;
+  border: 1px solid #fde047;
+  white-space: nowrap;
+}
+
+/* Position card */
+.position-card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.position-card:last-child {
+  margin-bottom: 0;
+}
+
+.position-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.position-card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+/* Icon circle for each department (decorative aria-hidden span) */
+.dept-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.position-card-title h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  overflow-wrap: anywhere;
+}
+
+.position-card-title .dept-label {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.openings-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  min-height: var(--space-3);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #1e3a8a;
+  white-space: nowrap;
+  flex: none;
+}
+
+.position-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+/* The three-column row (role title, department, quota) */
+.position-fields-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Bottom form actions */
+.campaign-bottom-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-line);
+  margin-top: var(--space-2);
+}
+
+/* Long-item overflow guard */
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* Screen-reader-only utility — shared by index.html and schedule.html,
+   defined once here (used by both pages). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tablet: 768 px */
+@media (min-width: 768px) {
+  .form-section {
+    padding: var(--space-4);
+  }
+
+  .field-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Full-width rows always stay single-column */
+  .field-row--full {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Campaign Name spans full width, Host Club fills the second column */
+  .field-row--name-host .field:first-child {
+    grid-column: 1;
+  }
+
+  .position-fields-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Quota field is narrow; role title + dept in first two, quota in third */
+  .position-fields-row .field--quota {
+    grid-column: auto;
+  }
+
+  .campaign-top-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* Laptop: 1280 px */
+@media (min-width: 1280px) {
+  .form-section {
+    padding: var(--space-5);
+  }
+
+  /* Three equal columns for the three position fields */
+  .position-fields-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Dates side by side */
+  .field-row--dates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 8. Page: schedule.html (Interview Scheduling) */
+
+/* Page title block */
+.schedule-page-title {
+  margin-bottom: var(--space-4);
+}
+
+.schedule-page-title h1 {
+  margin-bottom: var(--space-1);
+}
+
+/* Title row: h1 + disabled Approve button side by side at wider widths */
+.schedule-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Summary stat cards: reuse the shared .stats grid and .stat/.card base.
+   .schedule-stat only adds the compact column layout and label sizing on top. */
+.schedule-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.schedule-stat dt {
+  font-size: 0.875rem;
+}
+
+.schedule-stat .stat-note {
+  font-size: 0.875rem;
+}
+
+.stat-conflict .stat-value {
+  color: var(--color-danger);
+}
+
+/* Conflict banner */
+.conflict-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: #fefce8;
+  border: 2px solid #fbbf24;
+  border-radius: var(--radius);
+  margin-bottom: var(--space-4);
+}
+
+.conflict-banner-icon {
+  flex: none;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.conflict-banner-body {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.conflict-banner-title {
+  margin: 0 0 var(--space-1);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #78350f;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.conflict-tag {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--color-danger);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.conflict-banner-body p {
+  margin: 0;
+  color: #78350f;
+  overflow-wrap: anywhere;
+}
+
+.conflict-banner-action {
+  flex: none;
+}
+
+/* Scheduling parameters form (uses the shared .field) */
+.params-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.params-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.params-header h2 {
+  margin: 0;
+}
+
+.params-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+/* Schedule table section (table itself uses the shared .table-wrap) */
+.schedule-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.schedule-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.schedule-toolbar .field {
+  flex: 1 1 180px;
+}
+
+.toolbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.showing-count {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Row highlight variants */
+.row-conflict {
+  background: #fff7ed;
+}
+
+.row-unassigned {
+  background: var(--color-bg);
+}
+
+/* Time slot cell */
+.time-slot {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.time-slot-conflict {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+/* Interviewer conflict highlight */
+.interviewer-conflict {
+  color: var(--color-danger);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Unassigned cell text */
+.cell-unassigned {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* Unassigned reason sub-line */
+.cell-reason {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Avatar initials (smaller than the shared .avatar) */
+.avatar-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--space-4);
+  height: var(--space-4);
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.applicant-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.applicant-name {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+/* Table footer / legend */
+.schedule-table-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-line);
+}
+
+.table-count-note {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.legend-dot {
+  display: inline-block;
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  flex: none;
+}
+
+.legend-dot-proposed { background: #16a34a; }
+.legend-dot-conflict { background: var(--color-danger); }
+.legend-dot-unassigned { background: var(--color-border); }
+
+/* Bottom action bar */
+.schedule-bottom-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-line);
+  margin-top: var(--space-2);
+}
+
+/* Tablet: 768 px */
+@media (min-width: 768px) {
+  .schedule-title-row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .params-section {
+    padding: var(--space-4);
+  }
+
+  .params-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .schedule-section {
+    padding: var(--space-4);
+  }
+}
+
+/* Laptop: 1280 px */
+@media (min-width: 1280px) {
+  .params-fields {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Assigned panelists field spans the last two columns at 1280 */
+  .params-fields .field--panelists {
+    grid-column: span 2;
+  }
+}
