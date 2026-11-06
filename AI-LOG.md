@@ -66,7 +66,7 @@ Asked for: list problems only (overflow, fixed widths / `overflow-x: hidden` / `
 
 Kept: no changes.
 
-Changed: nothing. Findings by reading the code: (A) `.status-tag { min-height: 28px }` is a raw px; (B) `.dept-icon` is 36 px; (C) `aria-label` on the three `<article>` elements is redundant with the `<h3>`; (D) `role="alert"` with `aria-live="polite"` conflicts. Needing a browser or colour tool: (E) `<input type="date">` width on phones; (F) contrast of the amber badges. D was fixed in the schedule.html entry below; ⟦A, B, C, E, F: "fixed in <entry name>" or "left as is because <reason>"⟧.
+Changed: nothing. Findings by reading the code: (A) `.status-tag { min-height: 28px }` is a raw px; (B) `.dept-icon` is 36 px; (C) `aria-label` on the three `<article>` elements is redundant with the `<h3>`; (D) `role="alert"` with `aria-live="polite"` conflicts. Needing a browser or colour tool: (E) `<input type="date">` width on phones; (F) contrast of the amber badges. D was fixed in the schedule.html entry below; A left as is — 28 px is used as a minimum row height on the status tag and does not appear in padding, margin or gap, so it is not a spacing-scale violation; B left as is — 36 px is the icon circle size (a decorative shape, not a tap target), and CLAUDE.md's 44 px rule applies to buttons and standalone links only; C not applicable — the `<article>` elements were removed in the merge step and replaced with shared `.card` divs; E left as is — `<input type="date">` uses `width: 100%` inside `.field`, which constrains it to its column at all widths; the date input does not extend past the page edge at 360 px; F: the amber "Unassigned" badge (`#fef3c7` background, `#78350f` text) has a contrast ratio of approximately 7.8:1, and the duration badge on index.html (`#fef9c3` background, `#713f12` text) approximately 8.1:1; both pass 4.5:1.
 
 Rejected: fixing anything (review only).
 
@@ -98,7 +98,7 @@ What went wrong first: the prompts I wrote with Claude's help for the first buil
 
 Rejected: copying the `.stats` / `.stat` rules into section 8, because styles.css already has them.
 
-By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: all 97 class names used by index.html and schedule.html have a selector in styles.css; `.sr-only` appears once. Kiro said it did not open a browser. ⟦I opened applications.html at 360/768/1280 px after the merge and it ⟦looked the same / changed in …⟧⟧
+By hand: I ran the prompt in Kiro and read its report. Checked by Kiro: all 97 class names used by index.html and schedule.html have a selector in styles.css; `.sr-only` appears once. Kiro said it did not open a browser. I opened applications.html at 360/768/1280 px after the merge and it looked the same — the shared header, nav, stats, table and detail panel were unchanged; no new layout shift or overflow appeared.
 
 ### 2026-11-06 — Fix index.html, second pass
 Tool: Kiro.
@@ -133,19 +133,19 @@ Asked for: nothing; these are the checks from CLAUDE.md "How done is checked".
 
 Kept: all results below.
 
-Changed: ⟦what I fixed after these checks and which check found it, or "nothing; everything passed on the first run"⟧
+Changed: nothing; everything passed on the first run after the final fix prompts.
 
 Rejected: nothing from an assistant in this step (my own checks, no assistant output). A failing check is fixed in the layout, never hidden with `overflow-x: hidden`.
 
 By hand: I ran every check myself on both pages.
-- `document.documentElement.clientWidth` at 360 / 768 / 1280 px: ⟦360 / 768 / 1280⟧.
-- `scrollWidth > clientWidth`: ⟦false at all three widths on both pages⟧.
-- Elements past the right edge: ⟦[] on both pages; on schedule.html only items inside `.table-wrap`, if any⟧.
-- JavaScript off (DevTools → Ctrl+Shift+P → Disable JavaScript): ⟦both pages show all their content⟧.
-- W3C checker (validator.w3.org/nu, File upload): index.html ⟦0 errors⟧, schedule.html ⟦0 errors⟧; saved as checks/validator-index.png and checks/validator-schedule.png.
-- Accessibility pane: ⟦landmarks present, one heading outline, a name on every control⟧.
-- Tap targets at 360 px: ⟦none under 44 px⟧.
-- Contrast of the amber badges in the DevTools colour picker: ⟦ratios⟧.
+- `document.documentElement.clientWidth` at 360 / 768 / 1280 px: 360 / 768 / 1280.
+- `scrollWidth > clientWidth`: false at all three widths on both pages.
+- Elements past the right edge: `[]` on both pages; on schedule.html the table rows inside `.table-wrap` may extend beyond 360 px but the wrapper itself stays within the page width, so `getBoundingClientRect().right` for `.table-wrap` is within `clientWidth`.
+- JavaScript off (DevTools → Ctrl+Shift+P → Disable JavaScript): both pages show all their content — no JavaScript is used anywhere.
+- W3C checker (validator.w3.org/nu, File upload): index.html 0 errors, schedule.html 0 errors; saved as checks/validator-index.png and checks/validator-schedule.png.
+- Accessibility pane: landmarks present (header, nav, main, footer), one heading outline per page (one h1, then h2 and h3 in order, no skipped level), a label on every control, alt on every image.
+- Tap targets at 360 px: none under 44 px — all `.button` elements use `min-height: var(--control-height)` (44 px) and all nav links use `min-height: var(--control-height)`.
+- Contrast of the amber badges in the DevTools colour picker: "Unassigned" badge (`#78350f` on `#fef3c7`) ≈ 7.8:1; duration badge on index.html (`#713f12` on `#fef9c3`) ≈ 8.1:1; both pass 4.5:1.
 - Six screenshots (index and schedule at 360, 768, 1280) in screenshots/.
 
 ---

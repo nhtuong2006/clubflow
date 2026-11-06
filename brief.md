@@ -1,7 +1,7 @@
 # brief.md — what we gave the assistant (PA#2, ClubFlow)
 
 Team: Đào Duy Long (24127443), Nguyễn Hữu Tường (24127584)
-Assistant: Assistants: Claude (claude.ai chat) for planning, prompt writing and review; Kiro (agentic session in the repository) for building and editing files. Prompts are pasted in the order they were sent.
+Assistants: Claude (claude.ai chat) for planning, prompt writing and review; Kiro (agentic session in the repository) for building and editing files. Prompts are pasted in the order they were sent.
 
 ## Member A — Đào Duy Long (24127443)
  
@@ -310,7 +310,6 @@ href="#", spacing tokens only. Report what you changed and which checks you actu
  
 After each Kiro prompt I open the page in Chrome, and I run the four checks from "How done is checked" above (scroll, JavaScript off, W3C, Accessibility pane) at 360, 768 and 1280 px; the results are in `checks/` and `screenshots/` and in the last entry of `AI-LOG.md`.
 
-Assistants: Claude (claude.ai) for Member B; Kiro and Claude (claude.ai) for Member A.
 ---
 
 ## Member B — Nguyễn Hữu Tường (24127584)
